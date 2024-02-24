@@ -1,10 +1,12 @@
 ---
+import ThemeButton from '@/components/ThemeButton.astro';
+
 import InstagramIcon from '@/icons/instagram.astro';
 import XIcon from '@/icons/x.astro';
 ---
 
-<footer class="mt-10 w-full border-secondary border-t-2 flex flex-col md:flex-row justify-center items-center md:justify-between pt-6 pb-20">
-  <span class="text-secondary text-center text-balance">
+<footer class="mt-10 w-full border-secondary dark:border-primary border-t-2 flex flex-col md:flex-row justify-center items-center md:justify-between pt-6 pb-20">
+  <span class="text-secondary dark:text-primary text-center text-balance">
     &#169; 2024 Oscar Cortes Fotografia. Todos los derechos reservados
   </span>
 
@@ -16,18 +18,21 @@ import XIcon from '@/icons/x.astro';
         href="https://www.instagram.com/oscarcortes01/"
         class="hover:scale-125 hover:opacity-70 transition inline-block"
       >
-        <InstagramIcon class="text-secondary"/>
+        <InstagramIcon class="text-secondary dark:text-primary"/>
       </a>
     </li>
     <li>
       <a
         target="_blank"
         rel="noopener"
-        href=""
+        href="#"
         class="hover:scale-125 hover:opacity-70 transition inline-block"
       >
-        <XIcon class="text-secondary" />
+        <XIcon class="text-secondary dark:text-primary" />
       </a>
+    </li>
+    <li>
+      <ThemeButton />
     </li>
   </ul>
 </footer>
