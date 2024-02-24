@@ -1,4 +1,6 @@
 ---
+import '@fontsource-variable/jost';
+
 interface Props {
 	title: string;
 }
@@ -7,45 +9,82 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta name="description" content="Porfolio profesional del fotografo Oscar Cortes" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
 	<body>
-		<slot />
+    <div class="relative container mx-auto w-screen -z-10 overflow-x-clip">
+      <img
+        aria-hidden="true"
+        src="/lights.svg"
+        class="absolute md:scale-125 lg:scale-100 lg:left-0 top-0 opacity-0 transform-gpu w-screen brightness-0 dark:brightness-200"
+        onload="this.classList.add('animate-fade-in', 'animate-duration-500')"
+        alt="Focos de luz"
+      />
+    </div>
+		<div class="max-w-6xl px-10 pt-40 mx-auto">
+			<slot />
+		</div>
 	</body>
 </html>
 <style is:global>
 	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
+		--color-primary: #ddd;
+		--color-secondary: #333;
+
+    --background-color: var(--color-primary);
+		--background-image: var(--background-color) url("/concrete.png") repeat;
 	}
+
+	.dark {
+    --color-primary: #333;
+    --color-secondary: #ddd;
+
+    --background-image: var(--background-color) url("/concrete-dark.png") repeat;
+  }
+
 	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
+		font-family: "Jost Variable", system-ui, sans-serif;
+		background: var(--background-image);
+		scroll-behavior: smooth;
+    overflow-x: hidden;
+    overscroll-behavior: none;
 	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+
+  /* Hiding class, making content visible only to screen readers but not visually */
+  /* "sr" meaning "screen-reader" */
+  .sr-only:not(:focus):not(:active) {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: theme("colors.primary");
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--background-image);
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: var(--background-image);
+  }
 </style>
