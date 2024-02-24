@@ -6,16 +6,32 @@ interface Props {
 }
 
 const { title } = Astro.props;
+const descriptionPage = "Porfolio profesional del fotografo Oscar Cortes";
 ---
 
 <!doctype html>
 <html lang="es">
 	<head>
+		<title>{title}</title>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Porfolio profesional del fotografo Oscar Cortes" />
+		<meta name="description" content={descriptionPage} />
+
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<title>{title}</title>
+
+    <meta
+    name="keywords"
+    content="fotografos, Oscar Cortes, ibague, blacksam07"
+  />
+
+    <meta name="og:title" content={title} />
+    <meta name="og:description" content={descriptionPage} />
+    <meta name="og:site_name" content="Oscar Cortes Fotografia" />
+    <meta name="og:type" content="website" />
+    <meta name="og:locale" content="es_CO" />
+
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
 	</head>
 	<body>
     <div class="relative container mx-auto w-screen -z-10 overflow-x-clip">
